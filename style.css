@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500&family=Rubik+Glitch&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    
+}
+.body-one, .body-two{
+    background-color: #03045e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.body-one h1, .body-two h1{
+    font-family: rubik glitch;
+    text-align: center;
+}
+.body-one img{
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 auto;
+    box-shadow: 3px 4px 8px #2b2b2b;
+}
+.body-one input{
+    font-family: kumbh sans;
+    padding: .6em 1em;
+    margin-top: 1.5em;
+}
+.body-one button, .body-two button{
+    padding: .6em 1em;
+    border-color: #f80d2c;
+    background-color: #14213d;
+}
+.body-one button a, .body-two button a{
+    text-decoration: none;
+    color: white;
+    font-family: kumbh sans;
+}
+.body-one button:hover, .body-two button:hover{
+    background-color: #040d20;
+    transition: all .4s ease;
+}
+.imgs{
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+.img-two{
+    cursor: pointer;
+}
+.img-two:hover{
+    transform: scale(1.1);
+    transition: all .5s ease;
+}
+#span-choice{
+    font-family: kumbh sans;
+}
+#winner{
+    font-family: kumbh sans;
+}
+#play-btn{
+    color: white;
+    font-family: kumbh sans;
+}
