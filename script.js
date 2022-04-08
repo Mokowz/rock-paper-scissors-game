@@ -5,6 +5,8 @@ const scissors = document.getElementById("scissors")
 const fighterName = document.getElementById("span-choice")
 const playBtn = document.getElementById("play-btn")
 const announceWinner = document.getElementById("winner")
+const scoreLine = document.getElementById("score")
+
 
 //Assign fighter values
 rock.addEventListener("click", function(){
@@ -23,33 +25,14 @@ scissors.addEventListener("click", function(){
     fighterName.innerHTML = `Your fighter is ${fighter}!`
 })
 
-//Random fighter generation
-// let random = Math.floor(Math.random() * 3)
-// let computerFighter = ""
-
-// if (random == 0){
-//     computerFighter = "paper"
-//     computerFighter = computerFighter.toUpperCase()
-// }
-// else if (random == 1){
-//     computerFighter = "rock"
-//     computerFighter = computerFighter.toUpperCase()
-// }
-// else{
-//     computerFighter = "scissors"
-//     computerFighter = computerFighter.toUpperCase()
-// }
-
-//Determine the winner
-setTimeout(function(){
-    playBtn.addEventListener("click", function(){
-        let random = Math.floor(Math.random() * 3)
+const determine_winner = () => {
+    let random = Math.floor(Math.random() * 3)
     let computerFighter = ""
 
     if (random == 0){
         computerFighter = "paper"
         computerFighter = computerFighter.toUpperCase()
-    }   
+    }
     else if (random == 1){
         computerFighter = "rock"
         computerFighter = computerFighter.toUpperCase()
@@ -59,51 +42,72 @@ setTimeout(function(){
         computerFighter = computerFighter.toUpperCase()
     }
 
-        if (computerFighter == "ROCK" && fighter == "SCISSORS"){
-            announceWinner.innerHTML = "You LOSE :("
-            announceWinner.innerHTML.style.color = "red" 
-        }
-        else if (computerFighter === fighter){
-            announceWinner.innerHTML = "You have DRAWN! Try again!"
-        }
-        else if (computerFighter == "ROCK" && fighter == "PAPER"){
-            announceWinner.innerHTML = "You WIN :)"
-            announceWinner.style.color = "green"
-        }
-        else if (computerFighter == "SCISSORS" && fighter == "ROCK"){
-            announceWinner.innerHTML = "You WIN :)"
-            announceWinner.style.color = "green" 
-        }
-        else if (computerFighter == "SCISSORS" && fighter == "PAPER"){
-            announceWinner.innerHTML = "You LOSE :("
-            announceWinner.style.color = "red"
-        }
-        else if (computerFighter == "PAPER" && fighter == "ROCK"){
-            announceWinner.innerHTML = "You LOSE :("
-            announceWinner.style.color = "red" 
-        }
-        else if (computerFighter == "PAPER" && fighter == "SCISSORS"){
-            announceWinner.innerHTML = "You WIN :)"
-            announceWinner.style.color = "green"
-        }
-        else if (fighter == ""){
-            announceWinner.innerHTML = "Choose a fighter!"
-        }
+    //compare the fighters
+    if (computerFighter == "ROCK" && fighter == "SCISSORS"){
+        announceWinner.innerHTML = "You LOSE :("
+        // announceWinner.innerHTML.style.color = "red" 
+    }
+    else if (computerFighter == fighter){
+        announceWinner.innerHTML = "You have DRAWN! Try again!"
+        // announceWinner.innerHTML.style.color = "white"
+    }
+    else if (computerFighter == "ROCK" && fighter == "PAPER"){
+        announceWinner.innerHTML = "You WIN :)"
+        // announceWinner.style.color = "green"
+    }
+    else if (computerFighter == "SCISSORS" && fighter == "ROCK"){
+        announceWinner.innerHTML = "You WIN :)"
+        // announceWinner.style.color = "green" 
+    }
+    else if (computerFighter == "SCISSORS" && fighter == "PAPER"){
+        announceWinner.innerHTML = "You LOSE :("
+        // announceWinner.style.color = "red"
+    }
+    else if (computerFighter == "PAPER" && fighter == "ROCK"){
+        announceWinner.innerHTML = "You LOSE :("
+        // announceWinner.style.color = "red" 
+    }
+    else if (computerFighter == "PAPER" && fighter == "SCISSORS"){
+        announceWinner.innerHTML = "You WIN :)"
+        // announceWinner.style.color = "green"
+    }
+    else if (fighter == ""){
+        announceWinner.innerHTML = "You have not chosen a fighter"
+    }
+    $("#play-btn").click(function(){
+        $("#winner").show()
     })
-}, 4000)
 
-//hide the announce winner message when the images are clicked
-$(".img-two").click(function(){
-    $("#winner").hide().show()
+    if (announceWinner.innerHTML == "You WIN :)"){
+        announceWinner.style.color = "green"
+    }
+    else if (announceWinner.innerHTML == "You LOSE :("){
+        announceWinner.style.color = "red" 
+    }
+    else if (announceWinner.innerHTML == "You have DRAWN! Try again!"){
+        announceWinner.style.color = "white"
+    }
+
+    let attempts = "0"
+    scoreLine.innerHTML = `Your score: ${attempts}`
+
+    if(announceWinner.innerHTML == "You WIN :)"){
+        attempts += 3
+        scoreLine.innerHTML = `Your score: ${attempts}`
+    }
+    else if (announceWinner.innerHTML == "You have DRAWN! Try again!"){
+        attempts += 1
+        scoreLine.innerHTML = `Your score: ${attempts}`
+    }
+
+    else if (announceWinner.innerHTML == "You LOSE :("){
+        attempts += 0
+        scoreLine.innerHTML = `Your score: ${attempts}`
+    }
+}
+
+playBtn.addEventListener("click", function(){
+    setTimeout(determine_winner, 700)
 })
 
-if (announceWinner.innerHTML = "You WIN :)"){
-    announceWinner.style.color = "green"
-}
-else if (announceWinner.innerHTML = "You LOSE :("){
-    announceWinner.style.color = "red"
-}
-else if (announceWinner.innerHTML = "You have DRAWN! Try again!"){
-    announceWinner.style.color = "white"
-}
 
